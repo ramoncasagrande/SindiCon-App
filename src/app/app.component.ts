@@ -10,12 +10,12 @@ import { SindicoService } from './sindico.service';
 })
 export class AppComponent implements OnInit {
   title = 'sindicon';
-  public sindicos: Sindico[] | any;
+  public sindicos: Sindico[] = [];
 
   constructor (private sindicoService: SindicoService){}
 
   ngOnInit() {
-    
+    this.listarSindicos();
   }
   
   public listarSindicos(): void {
