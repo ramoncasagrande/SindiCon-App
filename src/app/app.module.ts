@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { SindicoService } from './sindico.service';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { SindicoService } from './sindico.service';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [SindicoService],
   bootstrap: [AppComponent]
