@@ -48,6 +48,21 @@ export class AppComponent implements OnInit {
     }
   }
 
+  public adicionarSindico(adicionaForm: NgForm): void {
+    document.getElementById('fechar-modal')?.click();
+    this.sindicoService.adicionaSindico(adicionaForm.value).subscribe(
+      (response: Sindico) => {
+        console.log(response);
+        this.listarSindicos();
+        adicionaForm.reset;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+        adicionaForm.reset;
+      }
+    )
+  }
+
 
   public chamaModal(sindico: Sindico, mode: string): void {
     const container = document.getElementById('main-container');
