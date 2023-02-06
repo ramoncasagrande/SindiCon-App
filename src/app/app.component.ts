@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   title = 'sindicon';
   public sindicos: Sindico[] = [];
   public palavraChave: string | any;
+  public sindicoEditado: Sindico | any;
 
   constructor(private sindicoService: SindicoService) { }
 
@@ -63,6 +64,18 @@ export class AppComponent implements OnInit {
     )
   }
 
+  public editarSindico(sindico: Sindico): void {
+    this.sindicoService.atualizaSindico(sindico).subscribe(
+      (response: Sindico) => {
+        console.log(response);
+        this.listarSindicos();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    )
+  }
+
 
   public chamaModal(sindico: Sindico, mode: string): void {
     const container = document.getElementById('main-container');
@@ -75,6 +88,7 @@ export class AppComponent implements OnInit {
     }
     if (mode === 'editar'){
       button.setAttribute('data-target', '#editarModal');
+      this.sindicoEditado = sindico;
     }
     if (mode === 'excluir'){
       button.setAttribute('data-target', '#excluirModal');
