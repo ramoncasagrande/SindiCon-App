@@ -47,4 +47,24 @@ export class AppComponent implements OnInit {
       this.listarSindicos();
     }
   }
+
+
+  public chamaModal(sindico: Sindico, mode: string): void {
+    const container = document.getElementById('main-container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-toggle', 'modal');
+    if (mode === 'detalhar'){
+      button.setAttribute('data-target', '#detalharModal');
+    }
+    if (mode === 'editar'){
+      button.setAttribute('data-target', '#editarModal');
+    }
+    if (mode === 'excluir'){
+      button.setAttribute('data-target', '#excluirModal');
+    }
+    container?.appendChild(button);
+    button.click();
+  }
 }
