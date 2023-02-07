@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   public palavraChave: string | any;
   public sindicoEditado: Sindico | any;
   public sindicoExcluido: Sindico | any;
+  public sindicoDetalhado: Sindico | any;
 
   constructor(private sindicoService: SindicoService) { }
 
@@ -98,6 +99,7 @@ export class AppComponent implements OnInit {
     button.setAttribute('data-toggle', 'modal');
     if (mode === 'detalhar'){
       button.setAttribute('data-target', '#detalharModal');
+      this.sindicoDetalhado = sindico;
     }
     if (mode === 'editar'){
       button.setAttribute('data-target', '#editarModal');
