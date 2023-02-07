@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   public sindicos: Sindico[] = [];
   public palavraChave: string | any;
   public sindicoEditado: Sindico | any;
+  public sindicoExcluido: Sindico | any;
 
   constructor(private sindicoService: SindicoService) { }
 
@@ -76,6 +77,18 @@ export class AppComponent implements OnInit {
     )
   }
 
+  public excluirSindico(sindicoId: number): void {
+    this.sindicoService.excluiSindico(sindicoId).subscribe(
+      (response: void) => {
+        console.log(response);
+        this.listarSindicos();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    )
+  }
+
 
   public chamaModal(sindico: Sindico, mode: string): void {
     const container = document.getElementById('main-container');
@@ -92,6 +105,7 @@ export class AppComponent implements OnInit {
     }
     if (mode === 'excluir'){
       button.setAttribute('data-target', '#excluirModal');
+      this.sindicoExcluido = sindico;
     }
     container?.appendChild(button);
     button.click();
