@@ -175,3 +175,13 @@ body{margin-top:20px;}
 .table-stats .table-line-plus .status-social-icon {
 	color: #a75d54;
 }
+
+.img-detalhe {
+	height: 100px;
+	border-radius: 50%;
+}
+
+.topo-detalhe {
+	display: flex;
+	justify-content: center;
+}
