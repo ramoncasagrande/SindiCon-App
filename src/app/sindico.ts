@@ -8,4 +8,5 @@ export interface Sindico {
     numero: string;
     bairro: string;
     cidade: string;
+    imagemUrl: string;
 }
